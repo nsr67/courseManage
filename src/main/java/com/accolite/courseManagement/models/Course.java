@@ -85,7 +85,8 @@ public class Course {
 	@Override
 	public String toString() {
 		return "CourseEntity [id=" + id + ", desc=" + description + ", prerequesite=" + prerequesite + ", lastUpdated="
-				+ lastupdated + ", feedback=" + feedback + ", location=" + location + ", skills=" + skills + ", creator=" + creator + "]";
+				+ lastupdated + ", feedback=" + feedback + ", location=" + location + 
+				", skill=" + skills + ", creator=" + creator + "]";
 	}
 
 }

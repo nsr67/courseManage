@@ -128,14 +128,14 @@ public class CourseService {
 		return mapEntityToObject(entity);
 
 	}
+	
+	public Course getCoursesByLocation(String location) throws NoContentException {
 
-//	public Course fetchCoursesByLocation(String location) throws NoContentException {
-//
-//		Optional<CourseEntity> entity = courseRepository.findByLocation(location);
-//		if (!entity.isPresent()) {
-//			throw new NoContentException(HttpStatus.NO_CONTENT);
-//		}
-//		return mapEntityToObject(entity.get());
-//
-//	}
+		Optional<CourseEntity> entity = courseRepository.findByLocation(location);
+		if (!entity.isPresent()) {
+			throw new NoContentException(HttpStatus.NO_CONTENT);
+		}
+		return mapEntityToObject(entity.get());
+
+	}
 }

@@ -72,10 +72,24 @@ public class CourseController {
 		try {
 
 			courseRepository.deleteById(id);
-			return new ResponseEntity<>("Deleted", HttpStatus.NO_CONTENT);
+			return new ResponseEntity<String>("Deleted", HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Error occured", HttpStatus.EXPECTATION_FAILED);
+			return new ResponseEntity<String>("Error occured", HttpStatus.NOT_FOUND);
 		}
+	}
+	
+	//Get records by location
+	@GetMapping(path = "/location/{location}")
+	public ResponseEntity<Course> getDataFromcourseTable(@PathVariable("location") String location) {
+		Course courseData = null;
+		try {
+			courseData = courseService.getCoursesByLocation(location);
+		} catch (NoContentException e) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+
+		return new ResponseEntity<>(courseData, HttpStatus.OK);
+
 	}
 
 }
