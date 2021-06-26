@@ -19,6 +19,7 @@ https://www.youtube.com/watch?v=WuBcTJnIuzo
 create database coursemanagement;
 
 use coursemanagement;
+
 below is the query to create table 
 
 
