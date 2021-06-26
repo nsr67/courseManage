@@ -16,20 +16,21 @@ watch below video
 
 https://www.youtube.com/watch?v=WuBcTJnIuzo
 
-create database testdb;
+create database coursemanagement;
 
-use testdb;
+use coursemanagement;
 below is the query to create table 
 
 
-create table course_entity(id bigint not null auto_increment, description varchar(45), feedback varchar(45), lastupdated varchar(45), location varchar(45), prerequesite varchar(45), primary key (id)) engine=InnoDB
+create table course_entity(id bigint not null auto_increment, description varchar(45), feedback varchar(45), lastupdated varchar(45), location varchar(45), prerequesite varchar(45), primary key (id)) engine=InnoDB;
 
-create table course_entity_creator (course_entity_id bigint not null, creator_id bigint not null) engine=InnoDB
+create table course_entity_creator (course_entity_id bigint not null, creator_id bigint not null) engine=InnoDB;
 
-create table course_entity_skill (course_entity_id bigint not null, skill_id bigint not null) engine=InnoDB
+create table course_entity_skill (course_entity_id bigint not null, skill_id bigint not null) engine=InnoDB;
 
-create table creator (id bigint not null, name varchar(255), primary key (id)) engine=InnoDB
-create table skill (id bigint not null, name varchar(255), primary key (id)) engine=InnoDB
+create table creator (id bigint not null, name varchar(255), primary key (id)) engine=InnoDB;
+
+create table skill (id bigint not null, name varchar(255), primary key (id)) engine=InnoDB;
 
 How to generate RSA key 
 
