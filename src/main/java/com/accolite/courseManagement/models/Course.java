@@ -88,5 +88,11 @@ public class Course {
 				+ lastupdated + ", feedback=" + feedback + ", location=" + location + 
 				", skill=" + skills + ", creator=" + creator + "]";
 	}
+	
+	public String getDetails() {
+		return "Course Details of "+ description +"\nPrerequesite=" + prerequesite + "\nLastUpdated="
+				+ lastupdated + "\nFeedback=" + feedback + "\nLocation=" + location + "\nSkill=" + skills + "\nCreator=" + creator;
+		
+	}
 
 }

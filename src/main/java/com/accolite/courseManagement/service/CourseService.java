@@ -41,9 +41,9 @@ public class CourseService {
 		entity.setPrerequesite(course.getPrerequesite());
 		entity.setLastupdated(course.getLastupdated());
 		entity.setFeedback(course.getFeedback());
+		entity.setLocation(course.getLocation());
 		entity.setSkill(addSkill(course));
 		entity.setCreator(addCreator(course));
-		entity.setLocation(course.getLocation());
 		return entity;
 	}
 
@@ -129,13 +129,9 @@ public class CourseService {
 
 	}
 	
-	public Course getCoursesByLocation(String location) throws NoContentException {
+	public List<CourseEntity> getCoursesByLocation(String location) throws NoContentException {
 
-		Optional<CourseEntity> entity = courseRepository.findByLocation(location);
-		if (!entity.isPresent()) {
-			throw new NoContentException(HttpStatus.NO_CONTENT);
-		}
-		return mapEntityToObject(entity.get());
+		return courseRepository.findByLocation(location);
 
 	}
 }

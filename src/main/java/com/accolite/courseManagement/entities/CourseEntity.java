@@ -26,6 +26,8 @@ public class CourseEntity {
 	private List<Skill> skill;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Creator> creator;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Participants> participant;
 	
 	public CourseEntity() {
 	}
@@ -93,7 +95,14 @@ public class CourseEntity {
 	public void setCreator(List<Creator> creator) {
 		this.creator = creator;
 	}
+	
+	public List<Participants> getParticipant() {
+		return participant;
+	}
 
+	public void setParticipant(List<Participants> participant) {
+		this.participant = participant;
+	}
 
 	@Override
 	public String toString() {

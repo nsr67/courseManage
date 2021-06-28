@@ -1,5 +1,6 @@
 package com.accolite.courseManagement.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -21,6 +22,7 @@ import com.accolite.courseManagement.exception.NoContentException;
 import com.accolite.courseManagement.models.Course;
 import com.accolite.courseManagement.repositories.CourseRepository;
 import com.accolite.courseManagement.service.CourseService;
+import com.accolite.courseManagement.service.EmailService;
 
 @RestController
 @RequestMapping("/course")
@@ -28,6 +30,9 @@ public class CourseController {
 
 	@Autowired
 	private CourseService courseService;
+	
+	@Autowired
+	private EmailService emailservice;
 
 	@Autowired
 	private CourseRepository courseRepository;
@@ -35,6 +40,7 @@ public class CourseController {
 	//save records in course_entity table
 	@PostMapping("/save")
 	public ResponseEntity<Course> saveIntocourseItemTable(@RequestBody Course course) {
+		emailservice.sendSimpleMessage(course.getDescription(),course.getDetails());
 		return new ResponseEntity<>(courseService.saveIntocourseItemTable(course), HttpStatus.OK);
 	}
 
@@ -70,7 +76,6 @@ public class CourseController {
 	@DeleteMapping("/deletecourse/{id}")
 	public ResponseEntity<String> deletecourse(@PathVariable("id") Long id) {
 		try {
-
 			courseRepository.deleteById(id);
 			return new ResponseEntity<String>("Deleted", HttpStatus.OK);
 		} catch (Exception e) {
@@ -80,15 +85,15 @@ public class CourseController {
 	
 	//Get records by location
 	@GetMapping(path = "/location/{location}")
-	public ResponseEntity<Course> getDataFromcourseTable(@PathVariable("location") String location) {
-		Course courseData = null;
+	public ResponseEntity<List<CourseEntity>> getDataFromcourseTable(@PathVariable("location") String location) throws NoContentException {
+		List<CourseEntity> courseentity=null;
 		try {
-			courseData = courseService.getCoursesByLocation(location);
+			courseentity= courseService.getCoursesByLocation(location);
 		} catch (NoContentException e) {
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(courseentity,HttpStatus.NO_CONTENT);
 		}
-
-		return new ResponseEntity<>(courseData, HttpStatus.OK);
+		
+		return new ResponseEntity<>(courseentity, HttpStatus.OK);
 
 	}
 
