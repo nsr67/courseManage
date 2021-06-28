@@ -3,29 +3,21 @@ package com.accolite.courseManagement.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.accolite.courseManagement.entities.CourseEntity;
-import com.accolite.courseManagement.entities.Participants;
+import com.accolite.courseManagement.models.Participants;
 
-import java.util.stream.Collectors;
-
-import javax.persistence.Entity;
-
-@Component
+@Service
 public class EmailService {
 	
 	@Autowired
     private JavaMailSender emailSender;
 	
-    public void sendSimpleMessage(String subject,String body)
-    {
-    	
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo("rajputneeraj6798@gmail.com");
-        mailMessage.setSubject(subject+" course details are given in the body");
-        mailMessage.setText(body);
+	public void sendMailToParticipant(Participants participant) {
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(participant.getEmail());
+        mailMessage.setSubject(participant.getSubject()+" details");
+        mailMessage.setText(participant.getBody());
         try
         {
             emailSender.send(mailMessage);
@@ -33,7 +25,7 @@ public class EmailService {
         catch (Exception e) {
             System.out.print(e);
         }
-    }
+	}
 
 
 }

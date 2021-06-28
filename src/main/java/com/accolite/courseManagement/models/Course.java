@@ -5,7 +5,6 @@ import java.util.List;
 import com.accolite.courseManagement.entities.Creator;
 import com.accolite.courseManagement.entities.Skill;
 
-
 public class Course {
 	private Long id;
 	private String description;

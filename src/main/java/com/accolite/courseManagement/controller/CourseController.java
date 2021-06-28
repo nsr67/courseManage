@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accolite.courseManagement.entities.CourseEntity;
 import com.accolite.courseManagement.exception.NoContentException;
 import com.accolite.courseManagement.models.Course;
+import com.accolite.courseManagement.models.Participants;
 import com.accolite.courseManagement.repositories.CourseRepository;
 import com.accolite.courseManagement.service.CourseService;
 import com.accolite.courseManagement.service.EmailService;
@@ -40,7 +41,6 @@ public class CourseController {
 	//save records in course_entity table
 	@PostMapping("/save")
 	public ResponseEntity<Course> saveIntocourseItemTable(@RequestBody Course course) {
-		emailservice.sendSimpleMessage(course.getDescription(),course.getDetails());
 		return new ResponseEntity<>(courseService.saveIntocourseItemTable(course), HttpStatus.OK);
 	}
 
@@ -95,6 +95,13 @@ public class CourseController {
 		
 		return new ResponseEntity<>(courseentity, HttpStatus.OK);
 
+	}
+	
+	@PostMapping("/email")
+	public String sendEmail(@RequestBody Participants participant) {
+		emailservice.sendMailToParticipant(participant);
+		return "Email Sent Successfully";
+		
 	}
 
 }
