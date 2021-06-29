@@ -7,6 +7,7 @@ import com.accolite.courseManagement.entities.Skill;
 
 public class Course {
 	private Long id;
+	private String coursename;
 	private String description;
 	private String prerequesite;
 	private String lastupdated;
@@ -24,6 +25,14 @@ public class Course {
 	
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getCourseName() {
+		return coursename;
+	}
+	
+	public void setCourseName(String coursename) {
+		this.coursename = coursename;
 	}
 	
 	public String getDescription() {
@@ -58,6 +67,14 @@ public class Course {
 		this.feedback = feedback;
 	}
 	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
 	public List<Skill> getSkills() {
 		return skills;
 	}
@@ -73,25 +90,16 @@ public class Course {
 		this.creator = creator;
 	}
 
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
 	@Override
 	public String toString() {
-		return "CourseEntity [id=" + id + ", desc=" + description + ", prerequesite=" + prerequesite + ", lastUpdated="
-				+ lastupdated + ", feedback=" + feedback + ", location=" + location + 
-				", skill=" + skills + ", creator=" + creator + "]";
+		return "CourseEntity [id=" + id + ", CourseName=" + coursename + ", desc=" + description + ", prerequesite=" + prerequesite + ", lastUpdated="
+				+ lastupdated + ", feedback=" + feedback + ", location=" + location + ", skill=" + skills + ", creator=" + creator + "]";
 	}
 	
-	public String getDetails() {
-		return "Course Details of "+ description +"\nPrerequesite=" + prerequesite + "\nLastUpdated="
-				+ lastupdated + "\nFeedback=" + feedback + "\nLocation=" + location + "\nSkill=" + skills + "\nCreator=" + creator;
-		
-	}
+//	public String getDetails() {
+//		return "Course Details of "+ description +"\nPrerequesite=" + prerequesite + "\nLastUpdated="
+//				+ lastupdated + "\nFeedback=" + feedback + "\nLocation=" + location + "\nSkill=" + skills + "\nCreator=" + creator;
+//		
+//	}
 
 }

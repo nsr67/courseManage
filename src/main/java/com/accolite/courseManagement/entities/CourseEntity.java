@@ -16,6 +16,7 @@ public class CourseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String coursename;
 	private String description;
 	private String prerequesite;
 	private String feedback;
@@ -36,6 +37,14 @@ public class CourseEntity {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getCourseName() {
+		return coursename;
+	}
+
+	public void setCourseName(String coursename) {
+		this.coursename = coursename;
 	}
 	
 	public String getDescription() {
@@ -96,7 +105,7 @@ public class CourseEntity {
 
 	@Override
 	public String toString() {
-		return "CourseEntity [id=" + id + ", desc=" + description + ", prerequesite=" + prerequesite + ", lastUpdated="
+		return "CourseEntity [id=" + id + ", CourseName=" + coursename + ", desc=" + description + ", prerequesite=" + prerequesite + ", lastUpdated="
 				+ lastupdated + ", feedback=" + feedback + ", location=" + location + ", skill=" + skill + ", creator=" + creator +"]";
 	}
 

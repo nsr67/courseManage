@@ -37,6 +37,7 @@ public class CourseService {
 	public CourseEntity mapObjectToEntity(Course course) {
 		CourseEntity entity = new CourseEntity();
 		entity.setId(course.getId());
+		entity.setCourseName(course.getCourseName());
 		entity.setDescription(course.getDescription());
 		entity.setPrerequesite(course.getPrerequesite());
 		entity.setLastupdated(course.getLastupdated());
@@ -105,6 +106,7 @@ public class CourseService {
 	public Course mapEntityToObject(CourseEntity entity) {
 		Course course = new Course();
 		course.setId(entity.getId());
+		course.setCourseName(entity.getCourseName());
 		course.setDescription(entity.getDescription());
 		course.setPrerequesite(entity.getPrerequesite());
 		course.setLastupdated(entity.getLastupdated());

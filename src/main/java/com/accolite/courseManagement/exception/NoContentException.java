@@ -12,8 +12,6 @@ public class NoContentException extends Exception{
 	 public NoContentException(HttpStatus httpStatus) {
 	        super();
 	        this.httpStatus = httpStatus;
-	        
-	        
 	    }
 	 
 	 public NoContentException(HttpStatus httpStatus, String errorMessage, String piCode,String errorCode) {
