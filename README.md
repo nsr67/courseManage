@@ -42,4 +42,4 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
 Testing --------
 
-Course Management
+For Email service to work: Add YOUR_EMAIL_ADDRESS  and YOUR_PASSWOORD in application.properties 
