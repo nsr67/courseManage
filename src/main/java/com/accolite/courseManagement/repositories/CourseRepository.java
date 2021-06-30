@@ -15,6 +15,7 @@ import com.accolite.courseManagement.entities.CourseEntity;
 public interface CourseRepository extends CrudRepository<CourseEntity, Long> {
 
 	List<CourseEntity> findByLocation(String location);
+	List<CourseEntity> findAll();
 
 	
 }

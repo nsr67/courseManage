@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,8 +26,9 @@ import com.accolite.courseManagement.repositories.CourseRepository;
 import com.accolite.courseManagement.service.CourseService;
 import com.accolite.courseManagement.service.EmailService;
 
+@CrossOrigin(origins ="http://localhost:4200")
 @RestController
-@RequestMapping("/course")
+@RequestMapping({"/course"})
 public class CourseController {
 
 	@Autowired
@@ -38,6 +40,13 @@ public class CourseController {
 	@Autowired
 	private CourseRepository courseRepository;
 
+	//get all records from course_entity table
+	@GetMapping()
+	public List<CourseEntity> getAllCourse(){
+		List<CourseEntity> courseentity=null;
+	    courseentity= courseService.getCourses();
+		return courseentity;
+	}
 	//save records in course_entity table
 	@PostMapping("/save")
 	public ResponseEntity<Course> saveIntocourseItemTable(@RequestBody Course course) {

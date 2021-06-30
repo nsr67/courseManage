@@ -116,6 +116,10 @@ public class CourseService {
 		course.setLocation(entity.getLocation());
 		return course;
 	}
+	
+	public List<CourseEntity> getCourses(){
+		return courseRepository.findAll();
+	}
 
 	public Course getDataFromcourseTable(Long id) throws NoContentException {
 		Optional<CourseEntity> entity = courseRepository.findById(id);
