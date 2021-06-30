@@ -42,4 +42,4 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
 Testing --------
 
-For Email service to work: Add YOUR_EMAIL_ADDRESS  and YOUR_PASSWOORD in application.properties 
+For Email service to work: Add YOUR_EMAIL_ID and YOUR_PASSWOORD in <a>https://github.com/nsr67/courseManage/blob/master/src/main/resources/application.properties</a> 
