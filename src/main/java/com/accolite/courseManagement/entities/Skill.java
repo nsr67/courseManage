@@ -1,24 +1,36 @@
 package com.accolite.courseManagement.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Skill {
+	
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
 
 	public Skill() {
 
 	}
+	
+	
    
+	public Skill(String name) {
+		super();
+		this.name = name;
+	}
+
+
+
 	public Skill(long id, String name) {
 		super();
-		this.id = id;
+		this.id=id;
 		this.name = name;
 		
 	}

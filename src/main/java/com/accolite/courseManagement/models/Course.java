@@ -12,12 +12,28 @@ public class Course {
 	private String prerequesite;
 	private String lastupdated;
 	private String feedback;
-	private List<Skill> skills;
-	private List<Creator> creator;
 	private String location;
+	private List<Skill> skill;
+	private List<Creator> creator;
 
 	public Course() {
 	}
+	
+	
+	public Course(Long id, String coursename, String description, String prerequesite, String lastupdated,
+			String feedback, String location, List<Skill> skill, List<Creator> creator) {
+		super();
+		this.id = id;
+		this.coursename = coursename;
+		this.description = description;
+		this.prerequesite = prerequesite;
+		this.lastupdated = lastupdated;
+		this.feedback = feedback;
+		this.skill = skill;
+		this.creator = creator;
+		this.location = location;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -75,13 +91,14 @@ public class Course {
 		this.location = location;
 	}
 	
-	public List<Skill> getSkills() {
-		return skills;
+	public List<Skill> getSkill() {
+		return skill;
 	}
 	
-	public void setSkills(List<Skill> skills) {
-		this.skills = skills;
+	public void setSkill(List<Skill> skill) {
+		this.skill = skill;
 	}
+	
 	public List<Creator> getCreator() {
 		return creator;
 	}
@@ -93,7 +110,7 @@ public class Course {
 	@Override
 	public String toString() {
 		return "CourseEntity [id=" + id + ", CourseName=" + coursename + ", desc=" + description + ", prerequesite=" + prerequesite + ", lastUpdated="
-				+ lastupdated + ", feedback=" + feedback + ", location=" + location + ", skill=" + skills + ", creator=" + creator + "]";
+				+ lastupdated + ", feedback=" + feedback + ", location=" + location + ", skill=" + skill + ", creator=" + creator + "]";
 	}
 	
 //	public String getDetails() {

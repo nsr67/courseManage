@@ -50,11 +50,12 @@ public class CourseController {
 	//save records in course_entity table
 	@PostMapping("/save")
 	public ResponseEntity<Course> saveIntocourseItemTable(@RequestBody Course course) {
+		System.out.println(course);
 		return new ResponseEntity<>(courseService.saveIntocourseItemTable(course), HttpStatus.OK);
 	}
 
 	//Get records from course_enitiy table
-	@GetMapping(path = "{id}")
+	@GetMapping(path = "/{id}")
 	public ResponseEntity<Course> getDataFromcourseTable(@PathVariable("id") Long id) {
 		Course courseData = null;
 		try {

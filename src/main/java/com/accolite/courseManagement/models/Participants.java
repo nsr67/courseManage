@@ -1,5 +1,7 @@
 package com.accolite.courseManagement.models;
 
+
+
 public class Participants {
 	
 	private String email;

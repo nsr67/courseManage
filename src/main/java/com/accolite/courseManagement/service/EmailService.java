@@ -16,7 +16,7 @@ public class EmailService {
 	public void sendMailToParticipant(Participants participant) {
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(participant.getEmail());
-        mailMessage.setSubject(participant.getSubject()+" details");
+        mailMessage.setSubject(participant.getSubject()+" Details");
         mailMessage.setText(participant.getBody());
         try
         {

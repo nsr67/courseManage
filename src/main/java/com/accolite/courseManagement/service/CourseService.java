@@ -14,8 +14,6 @@ import com.accolite.courseManagement.entities.Skill;
 import com.accolite.courseManagement.exception.NoContentException;
 import com.accolite.courseManagement.models.Course;
 import com.accolite.courseManagement.repositories.CourseRepository;
-import com.accolite.courseManagement.repositories.CreatorRepository;
-import com.accolite.courseManagement.repositories.SkillRepository;
 
 @Service
 public class CourseService {
@@ -23,11 +21,11 @@ public class CourseService {
 	@Autowired
 	private CourseRepository courseRepository;
 	
-	@Autowired
-	private SkillRepository skillRepository;
-	
-	@Autowired
-	private CreatorRepository creatorRepository;
+//	@Autowired
+//	private SkillRepository skillRepository;
+//	
+//	@Autowired
+//	private CreatorRepository creatorRepository;
 
 	public Course saveIntocourseItemTable(Course course) {
 		CourseEntity entity = courseRepository.save(mapObjectToEntity(course));
@@ -50,16 +48,30 @@ public class CourseService {
 
 	private List<Skill> addSkill(Course course) {
 		List<Skill> skillList = new ArrayList<>();
-		int n = course.getSkills().size();
+		int n = course.getSkill().size();
+		System.out.println(n);
 		long skillId = 0;
 		String name = null;
 		for (int i = 0; i < n; i++) {
-			skillId = course.getSkills().get(i).getId();
-			name = course.getSkills().get(i).getName();
-			Skill skill = new Skill(skillId, name);
+			skillId = course.getSkill().get(i).getId();
+			name = course.getSkill().get(i).getName();
+			Skill skill = new Skill(name);
 			skillList.add(skill);
 		}
 		return skillList;
+	}
+	private List<Creator> addCreator(Course course) {
+		List<Creator> creatorList = new ArrayList<>();
+		int n = course.getCreator().size();
+		long creatorId = 0;
+		String name = null;
+		for (int i = 0; i < n; i++) {
+			creatorId = course.getCreator().get(i).getId();
+			name = course.getCreator().get(i).getName();
+			Creator creator = new Creator(name);
+			creatorList.add(creator);
+		}
+		return creatorList;
 	}
 
 	private List<Skill> addSkill(CourseEntity course) {
@@ -76,19 +88,6 @@ public class CourseService {
 		return skillList;
 	}
 
-	private List<Creator> addCreator(Course course) {
-		List<Creator> creatorList = new ArrayList<>();
-		int n = course.getCreator().size();
-		long creatorId = 0;
-		String name = null;
-		for (int i = 0; i < n; i++) {
-			creatorId = course.getCreator().get(i).getId();
-			name = course.getCreator().get(i).getName();
-			Creator creator = new Creator(creatorId, name);
-			creatorList.add(creator);
-		}
-		return creatorList;
-	}
 
 	private List<Creator> addCreator(CourseEntity course) {	
 		List<Creator> creatorList = new ArrayList<>();
@@ -111,7 +110,7 @@ public class CourseService {
 		course.setPrerequesite(entity.getPrerequesite());
 		course.setLastupdated(entity.getLastupdated());
 		course.setFeedback(entity.getFeedback());
-		course.setSkills(addSkill(entity));
+		course.setSkill(addSkill(entity));
 		course.setCreator(addCreator(entity));
 		course.setLocation(entity.getLocation());
 		return course;

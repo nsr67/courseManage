@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -23,13 +24,34 @@ public class CourseEntity {
 	private String location;
     private String lastupdated;
  
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = {
+	        CascadeType.PERSIST, 
+	        CascadeType.MERGE
+	    },fetch = FetchType.LAZY)
 	private List<Skill> skill;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = {
+	        CascadeType.PERSIST, 
+	        CascadeType.MERGE
+	    },fetch = FetchType.LAZY)
 	private List<Creator> creator;
 	
 	public CourseEntity() {
 	}
+	
+	public CourseEntity(Long id, String coursename, String description, String prerequesite, String feedback,
+			String location, String lastupdated, List<Skill> skill, List<Creator> creator) {
+		super();
+		this.id = id;
+		this.coursename = coursename;
+		this.description = description;
+		this.prerequesite = prerequesite;
+		this.feedback = feedback;
+		this.location = location;
+		this.lastupdated = lastupdated;
+		this.skill = skill;
+		this.creator = creator;
+	}
+	
 
 	public Long getId() {
 		return id;
